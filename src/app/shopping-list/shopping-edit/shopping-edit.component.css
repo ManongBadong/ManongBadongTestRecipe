@@ -1,0 +1,7 @@
+input.ng-invalid.ng-touched {
+    color: #212529;
+    background-color: #fff;
+    border-color: #d79494;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgb(253 13 13 / 25%);
+}
