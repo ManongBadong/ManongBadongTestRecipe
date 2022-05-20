@@ -8,14 +8,14 @@
                 </div>
                 <div class="col-sm-2">
                     <label for="amount">Amount</label>
-                    <input type="text" id="amount" class="form-control" formControlName="amount">
+                    <input type="number" id="amount" class="form-control" formControlName="amount" pattern="[1-9]+[0-9]*$">
                 </div>
             </div>
             <div class="row">
                 <div class="col-xs-12">
-                    <button class="btn btn-success" type="button" (click)="addIngredient()">Add</button>
-                    <button class="btn btn-danger" type="button">Delete</button>
-                    <button class="btn btn-primary" type="button">Clear</button>
+                    <button type="button" class="btn btn-success" (click)="addIngredient()" [disabled]="!shoppingListFormGroup.valid">{{ editMode ? 'Update' : 'Add' }}</button>
+                    <button type="button" class="btn btn-danger" (click)="deleteIngredient()" *ngIf="editMode">Delete</button>
+                    <button type="button" class="btn btn-primary" (click)="resetForm()">Clear</button>
                 </div>
             </div>
         </form>

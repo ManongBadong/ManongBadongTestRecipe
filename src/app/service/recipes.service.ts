@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 // import { Subject } from 'rxjs';
 import { Ingredient } from '../model/ingredient.model';
 import { Recipe } from '../model/recipe.model';
@@ -9,6 +10,8 @@ import { Recipe } from '../model/recipe.model';
 export class RecipeService {
 
   // selectedRecipe = new Subject<Recipe>();
+
+  recipeChanged = new Subject<Recipe[]>();
 
   private recipes: Recipe[] = [
     new Recipe(
@@ -27,8 +30,8 @@ export class RecipeService {
       'This is a test.'
       ,'https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?quality=90&webp=true&resize=300,272'
       ,[
-        new Ingredient('Nyebe', 15),
-        new Ingredient('Nyebe', 150),
+        new Ingredient('Nyebe1', 15),
+        new Ingredient('Nyebe2', 150),
       ]
     ),
   ];
@@ -39,19 +42,36 @@ export class RecipeService {
     return this.recipes.slice();
   }
 
+  generateId(): number {
+    return this.recipes.length + 1;
+  }
+
   // getSelectedRecipe() {
   //   return this.selectedRecipe;
   // }
 
-  addRecipe(id: number, name: string, description: string, imagePath: string) {
-    this.recipes.push(new Recipe(id, name, description, imagePath,[]));
-  }
+  addRecipe(recipe: Recipe): number {
+    let generateId: number = this.generateId()
+    this.recipes.push(new Recipe(this.generateId(), recipe.name, recipe.description, recipe.imagePath, recipe.ingredients));
+    this.recipeChanged.next(this.recipes.slice());
 
-  removeRecipe(index: number) {
-    this.recipes.splice(index,1);
+    return generateId;
   }
 
   getRecipe(id: number) {
     return this.recipes.find(r => r.id === id);
+  }
+
+
+  updateRecipe(updatedRecipe: Recipe) {
+    const ri = this.recipes.findIndex(r => r.id === updatedRecipe.id)
+    this.recipes[ri] = updatedRecipe;
+    this.recipeChanged.next(this.recipes.slice());
+  }
+
+  removeRecipe(index: number) {
+    const ri = this.recipes.findIndex(r => r.id === index)
+    this.recipes.splice(ri,1);
+    this.recipeChanged.next(this.recipes.slice());
   }
 }
