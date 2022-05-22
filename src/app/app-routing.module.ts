@@ -6,31 +6,39 @@ import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.com
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.component';
 import { RecipesComponent } from './recipes/recipes.component';
+import { RecipesResolverService } from './service/recipes-resolver.service';
 import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 
 const appRoutes: Routes = [
-    { path: 'recipe', component: RecipesComponent, children: [
-        { path: '', component: RecipeStartComponent, pathMatch: 'full'},
-        { path: 'new', component: RecipeEditComponent},
-        { path: ':id', component: RecipeDetailComponent},
-        { path: ':id/edit', component: RecipeEditComponent}
-    ]},
-    { path: 'shopping-list', component: ShoppingListComponent, children: [
-        { path: ':id', component: ShoppingEditComponent}
-    ]},
-    { path: '', component: RecipesComponent, pathMatch: 'full'},
-    { path: '**', redirectTo: 'recipe' },
+  {
+    path: 'recipe',
+    component: RecipesComponent,
+    children: [
+      { path: '', component: RecipeStartComponent, pathMatch: 'full' },
+      { path: 'new', component: RecipeEditComponent },
+      {
+        path: ':id',
+        component: RecipeDetailComponent,
+        resolve: [RecipesResolverService],
+      },
+      { path: ':id/edit', component: RecipeEditComponent },
+    ],
+  },
+  {
+    path: 'shopping-list',
+    component: ShoppingListComponent,
+    children: [{ path: ':id', component: ShoppingEditComponent }],
+  },
+  { path: '', component: RecipesComponent, pathMatch: 'full' },
+  { path: '**', redirectTo: 'recipe' },
 ];
 
 @NgModule({
-    imports: [
-        RouterModule.forRoot(appRoutes)
-        // RouterModule.forRoot(appRoutes, {useHash: true}) // Used for old browser
-    ],
-    exports: [RouterModule]
+  imports: [
+    RouterModule.forRoot(appRoutes),
+    // RouterModule.forRoot(appRoutes, {useHash: true}) // Used for old browser
+  ],
+  exports: [RouterModule],
 })
-
-export class AppRoutingModule {
-
-}
+export class AppRoutingModule {}
