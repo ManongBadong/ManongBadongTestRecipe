@@ -29,8 +29,6 @@ export class HeaderComponent {
     }
 
     fetchData() {
-        this.dataService.fetchRecipes().subscribe(response => {
-            console.log(response);
-        })
+        this.dataService.fetchRecipes();
     }
 }
