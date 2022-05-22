@@ -13,7 +13,7 @@ export class RecipeService {
 
   recipeChanged = new Subject<Recipe[]>();
 
-  private recipes: Recipe[] = [
+  /* private recipes: Recipe[] = [
     new Recipe(
       1,
       'Test Recipe',
@@ -34,7 +34,8 @@ export class RecipeService {
         new Ingredient('Nyebe2', 150),
       ]
     ),
-  ];
+  ]; */
+  private recipes: Recipe[];
 
   constructor() { }
 
