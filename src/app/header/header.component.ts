@@ -27,4 +27,8 @@ export class HeaderComponent {
         console.log('Badong!');
         this.dataService.storeRecipes();
     }
+
+    fetchData() {
+        console.log('fetch me!');
+    }
 }

@@ -11,9 +11,9 @@ export class DataStorageService {
     const recipes = this.recipeService.getRecipes();
     console.log(recipes);
 
-    this.http.post('https://ngcourserecipe-3c981-default-rtdb.asia-southeast1.firebasedatabase.app/post.json', recipes).subscribe(
+    this.http.put('https://ngcourserecipe-3c981-default-rtdb.asia-southeast1.firebasedatabase.app/recipes.json', recipes).subscribe(
       response => {
-        console.log('Data save successfully.');
+        console.log(response);
       }
     );
   }
