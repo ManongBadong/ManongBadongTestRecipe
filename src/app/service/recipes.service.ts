@@ -45,7 +45,10 @@ export class RecipeService {
   }
 
   getRecipes() {
-    return this.recipes.slice();
+    if (this.recipes) 
+      return this.recipes.slice();
+    
+    return [];
   }
 
   generateId(): number {
