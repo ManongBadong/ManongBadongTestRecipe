@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output } from "@angular/core";
+import { DataStorageService } from "../service/data-storage.service";
 
 @Component({
     selector: 'app-header',
@@ -8,10 +9,11 @@ import { Component, EventEmitter, Output } from "@angular/core";
 
 export class HeaderComponent {
 
+    constructor(private dataService: DataStorageService) {}
+
     @Output('featureSelected') featureSelected: EventEmitter<string> = new EventEmitter<string>();
 
     collapsed = false;
-
 
     navigateToRecipe() {
         this.featureSelected.emit('recipe');
@@ -19,5 +21,10 @@ export class HeaderComponent {
 
     navigateToShoppingList() {
         this.featureSelected.emit('shopping-list');
+    }
+
+    saveRecipes() {
+        console.log('Badong!');
+        this.dataService.storeRecipes();
     }
 }
