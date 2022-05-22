@@ -19,7 +19,7 @@ export class DataStorageService {
   }
 
   fetchRecipes() {
-    this.http.get('https://ngcourserecipe-3c981-default-rtdb.asia-southeast1.firebasedatabase.app/recipes.json').subscribe((recipes: Recipe[]) => {
+    this.http.get<Recipe[]>('https://ngcourserecipe-3c981-default-rtdb.asia-southeast1.firebasedatabase.app/recipes.json').subscribe(recipes => {
       this.recipeService.setRecipes(recipes);
     });
   }
