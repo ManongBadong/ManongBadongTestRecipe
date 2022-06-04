@@ -15,8 +15,9 @@ export class AuthComponent {
   }
 
   onSubmit() {
-    if (this.isLoginMode) {
+    if (!this.isLoginMode) {
       this.authService.signin();
+      console.log('dumaan ako dito');
     }
   }
 }
