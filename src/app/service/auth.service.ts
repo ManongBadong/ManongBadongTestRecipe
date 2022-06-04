@@ -15,10 +15,6 @@ export class AuthenticationService{
       returnSecureToken: true
     };
 
-    this.http.post('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCo-DZGhzkjq-G0_6giJvX4O-s3BwKEieg', signInData).subscribe(
-      res => {
-        console.log(res);
-      }
-    );
+    this.http.post('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCo-DZGhzkjq-G0_6giJvX4O-s3BwKEieg', signInData);
   }
 }
