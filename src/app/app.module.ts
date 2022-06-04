@@ -20,6 +20,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RecipeService } from './service/recipes.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthComponent } from './auth/auth.component';
+import { FormsModule } from '@angular/forms'
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { AuthComponent } from './auth/auth.component';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule,
   ],
   providers: [
     IngredientService,
