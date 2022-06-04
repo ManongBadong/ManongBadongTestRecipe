@@ -12,4 +12,5 @@ export class AuthComponent {
   onSwitchMode() {
     this.isLoginMode = !this.isLoginMode;
   }
+  
 }
