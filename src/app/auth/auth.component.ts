@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthenticationService } from '../service/auth.service';
 
 @Component({
   selector: 'app-auth',
@@ -7,10 +8,15 @@ import { Component } from '@angular/core';
 export class AuthComponent {
   isLoginMode = true;
 
-  constructor() {}
+  constructor(private authService: AuthenticationService) {}
 
   onSwitchMode() {
     this.isLoginMode = !this.isLoginMode;
   }
-  
+
+  onSubmit() {
+    if (this.isLoginMode) {
+      this.authService.signin();
+    }
+  }
 }

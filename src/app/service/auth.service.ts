@@ -2,7 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 
 @Injectable({ providedIn: 'root' })
-export class AuthService{
+export class AuthenticationService{
   constructor(private http: HttpClient) {}
 
   // Token
