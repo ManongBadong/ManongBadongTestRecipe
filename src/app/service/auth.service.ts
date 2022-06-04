@@ -9,10 +9,16 @@ export class AuthService{
   // AIzaSyCo-DZGhzkjq-G0_6giJvX4O-s3BwKEieg
 
   signin() {
-    let signInData = {};
+    let signInData = {
+      email: 'testData',
+      password: 'testPassword',
+      returnSecureToken: true
+    };
 
-    signInData.email = 'testData@gmail.com'
-
-    this.http.post('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCo-DZGhzkjq-G0_6giJvX4O-s3BwKEieg', signInData);
+    this.http.post('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCo-DZGhzkjq-G0_6giJvX4O-s3BwKEieg', signInData).subscribe(
+      res => {
+        console.log(res);
+      }
+    );
   }
 }
