@@ -5,10 +5,9 @@ import { Ingredient } from '../model/ingredient.model';
 import { Recipe } from '../model/recipe.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class RecipeService {
-
   // selectedRecipe = new Subject<Recipe>();
 
   recipeChanged = new Subject<Recipe[]>();
@@ -37,7 +36,7 @@ export class RecipeService {
   ]; */
   private recipes: Recipe[] = [];
 
-  constructor() { }
+  constructor() {}
 
   setRecipes(recipes: Recipe[]) {
     this.recipes = recipes;
@@ -45,9 +44,8 @@ export class RecipeService {
   }
 
   getRecipes() {
-    if (this.recipes) 
-      return this.recipes.slice();
-    
+    if (this.recipes) return this.recipes.slice();
+
     return [];
   }
 
@@ -60,27 +58,34 @@ export class RecipeService {
   // }
 
   addRecipe(recipe: Recipe): number {
-    let generateId: number = this.generateId()
-    this.recipes.push(new Recipe(this.generateId(), recipe.name, recipe.description, recipe.imagePath, recipe.ingredients));
+    let generateId: number = this.generateId();
+    this.recipes.push(
+      new Recipe(
+        this.generateId(),
+        recipe.name,
+        recipe.description,
+        recipe.imagePath,
+        recipe.ingredients
+      )
+    );
     this.recipeChanged.next(this.recipes.slice());
 
     return generateId;
   }
 
   getRecipe(id: number) {
-    return this.recipes.find(r => r.id === id);
+    return this.recipes.find((r) => r.id === id);
   }
 
-
   updateRecipe(updatedRecipe: Recipe) {
-    const ri = this.recipes.findIndex(r => r.id === updatedRecipe.id)
+    const ri = this.recipes.findIndex((r) => r.id === updatedRecipe.id);
     this.recipes[ri] = updatedRecipe;
     this.recipeChanged.next(this.recipes.slice());
   }
 
   removeRecipe(index: number) {
-    const ri = this.recipes.findIndex(r => r.id === index)
-    this.recipes.splice(ri,1);
+    const ri = this.recipes.findIndex((r) => r.id === index);
+    this.recipes.splice(ri, 1);
     this.recipeChanged.next(this.recipes.slice());
   }
 }

@@ -1,34 +1,33 @@
-import { Component, EventEmitter, Output } from "@angular/core";
-import { DataStorageService } from "../service/data-storage.service";
+import { Component, EventEmitter, Output } from '@angular/core';
+import { DataStorageService } from '../service/data-storage.service';
 
 @Component({
-    selector: 'app-header',
-    templateUrl: './header.component.html',
-    styleUrls: ['./header.component.css']
+  selector: 'app-header',
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.css'],
 })
-
 export class HeaderComponent {
+  constructor(private dataService: DataStorageService) {}
 
-    constructor(private dataService: DataStorageService) {}
+  @Output('featureSelected') featureSelected: EventEmitter<string> =
+    new EventEmitter<string>();
 
-    @Output('featureSelected') featureSelected: EventEmitter<string> = new EventEmitter<string>();
+  collapsed = false;
 
-    collapsed = false;
+  navigateToRecipe() {
+    this.featureSelected.emit('recipe');
+  }
 
-    navigateToRecipe() {
-        this.featureSelected.emit('recipe');
-    }
+  navigateToShoppingList() {
+    this.featureSelected.emit('shopping-list');
+  }
 
-    navigateToShoppingList() {
-        this.featureSelected.emit('shopping-list');
-    }
+  saveRecipes() {
+    console.log('Badong!');
+    this.dataService.storeRecipes();
+  }
 
-    saveRecipes() {
-        console.log('Badong!');
-        this.dataService.storeRecipes();
-    }
-
-    fetchData() {
-        this.dataService.fetchRecipes();
-    }
+  fetchData() {
+    this.dataService.fetchRecipes().subscribe();
+  }
 }
