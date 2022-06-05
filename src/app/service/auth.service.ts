@@ -30,24 +30,25 @@ export class AuthenticationService {
       returnSecureToken: true,
     };
 
-    return this.http.post<AuthResponseData>(
-      'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCo-DZGhzkjq-G0_6giJvX4O-s3BwKEieg',
-      signInData
-    )
-    .pipe(
-      catchError(this.handleError),
-      tap((resData) => {
-        this.handleAuthentication(
-          resData.email,
-          resData.localId,
-          resData.idToken,
-          +resData.expiresIn
-        );
-      });
-    );
+    return this.http
+      .post<AuthResponseData>(
+        'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCo-DZGhzkjq-G0_6giJvX4O-s3BwKEieg',
+        signInData
+      )
+      .pipe(
+        catchError(this.handleError),
+        tap((resData) => {
+          this.handleAuthentication(
+            resData.email,
+            resData.localId,
+            resData.idToken,
+            +resData.expiresIn
+          );
+        })
+      );
   }
 
-  login(authUser: {email: string; password: string }) {
+  login(authUser: { email: string; password: string }) {
     let loginData = {
       email: authUser.email,
       password: authUser.password,
@@ -61,7 +62,7 @@ export class AuthenticationService {
       )
       .pipe(
         catchError(this.handleError),
-        tap(resData => {
+        tap((resData) => {
           this.handleAuthentication(
             resData.email,
             resData.localId,

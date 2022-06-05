@@ -20,7 +20,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RecipeService } from './service/recipes.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthComponent } from './auth/auth.component';
-import { FormsModule } from '@angular/forms'
+import { FormsModule } from '@angular/forms';
+import { AppLoadingSpinner } from './shared-components/loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
@@ -36,19 +37,17 @@ import { FormsModule } from '@angular/forms'
     PageNotFoundComponent,
     RecipeStartComponent,
     RecipeEditComponent,
-    AuthComponent
+    AuthComponent,
+    AppLoadingSpinner,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
   ],
-  providers: [
-    IngredientService,
-    RecipeService
-  ],
-  bootstrap: [AppComponent]
+  providers: [IngredientService, RecipeService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
