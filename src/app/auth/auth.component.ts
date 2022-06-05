@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import { AuthenticationService } from '../service/auth.service';
 
 @Component({
@@ -7,6 +9,7 @@ import { AuthenticationService } from '../service/auth.service';
 })
 export class AuthComponent {
   isLoginMode = true;
+  isLoading = false;
 
   constructor(private authService: AuthenticationService) {}
 
@@ -14,10 +17,18 @@ export class AuthComponent {
     this.isLoginMode = !this.isLoginMode;
   }
 
-  onSubmit() {
-    if (!this.isLoginMode) {
-      this.authService.signin();
-      console.log('dumaan ako dito');
+  onSubmit(authForm: NgForm) {
+    if (!authForm.valid) {
+      return;
     }
+    this.isLoading = true;
+    let userSubs: Subscription;
+
+    if (!this.isLoginMode) {
+      this.authService.signUp(authForm.value);
+    } else {
+      this.authService.login(authForm.value);
+    }
+    this.isLoading = false;
   }
 }

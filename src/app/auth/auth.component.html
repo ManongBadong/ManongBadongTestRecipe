@@ -1,7 +1,13 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <form #authForm="ngForm" (ngSubmit)="onSubmit()">
+      <div *ngIf="isLoading"><app-loading-spinner></app-loading-spinner></div>
+      <app-loading-spinner></app-loading-spinner>
+      <form
+        #authForm="ngForm"
+        (ngSubmit)="onSubmit(authForm)"
+        *ngIf="!isLoading"
+      >
         <div class="row">
           <div class="col-6">
             <label for="username" class="form-label">Username</label>
@@ -30,7 +36,11 @@
         </div>
         <div class="row mt-5">
           <div class="col-12">
-            <button type="submit" class="btn btn-primary" [disabled]='!authForm.valid'>
+            <button
+              type="submit"
+              class="btn btn-primary"
+              [disabled]="!authForm.valid"
+            >
               {{ isLoginMode ? 'Login' : 'Sign Up' }}
             </button>
             <button
