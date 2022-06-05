@@ -18,10 +18,11 @@ import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.compon
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RecipeService } from './service/recipes.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthComponent } from './auth/auth.component';
 import { FormsModule } from '@angular/forms';
 import { AppLoadingSpinner } from './shared-components/loading-spinner/loading-spinner.component';
+import { AuthInterceptorService } from './interceptor/auth-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,15 @@ import { AppLoadingSpinner } from './shared-components/loading-spinner/loading-s
     ReactiveFormsModule,
     FormsModule,
   ],
-  providers: [IngredientService, RecipeService],
+  providers: [
+    IngredientService,
+    RecipeService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

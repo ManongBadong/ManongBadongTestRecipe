@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Subject, throwError } from 'rxjs';
+import { BehaviorSubject, Subject, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { User } from '../model/user.model';
 
@@ -16,7 +16,7 @@ export interface AuthResponseData {
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
-  user = new Subject<User>();
+  user = new BehaviorSubject<User>(null);
 
   constructor(private http: HttpClient) {}
 
@@ -89,6 +89,8 @@ export class AuthenticationService {
   private handleError(err: HttpErrorResponse) {
     let errorMessage = 'An unknown error occured!';
     if (!err.error || !err.error.error) return throwError(() => errorMessage);
+
+    console.log(err);
 
     switch (err.error.error.message) {
       case 'EMAIL_EXISTS':
