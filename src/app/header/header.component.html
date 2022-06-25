@@ -22,7 +22,7 @@
       </ul>
       <ul class="navbar-nav ms-auto" *ngIf="isAuthenticated">
         <li>
-          <a class="dropdown-item cursor">Logout</a>
+          <a class="dropdown-item cursor" (click)="onLogout()">Logout</a>
         </li>
         <li class="dropdown">
           <a appDropdown class="dropdown-toggle nav-item" role="button"
