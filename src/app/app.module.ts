@@ -23,6 +23,7 @@ import { AuthComponent } from './auth/auth.component';
 import { FormsModule } from '@angular/forms';
 import { AppLoadingSpinner } from './shared-components/loading-spinner/loading-spinner.component';
 import { AuthInterceptorService } from './interceptor/auth-interceptor.service';
+import { AlertComponent } from './shared-components/alert/alert.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { AuthInterceptorService } from './interceptor/auth-interceptor.service';
     RecipeEditComponent,
     AuthComponent,
     AppLoadingSpinner,
+    AlertComponent,
   ],
   imports: [
     BrowserModule,
