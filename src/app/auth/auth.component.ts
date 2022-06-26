@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewContainerRef } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -6,6 +6,7 @@ import {
   AuthenticationService,
   AuthResponseData,
 } from '../service/auth.service';
+import { AlertComponent } from '../shared-components/alert/alert.component';
 
 @Component({
   selector: 'app-auth',
@@ -18,7 +19,8 @@ export class AuthComponent {
 
   constructor(
     private authService: AuthenticationService,
-    private router: Router
+    private router: Router,
+    private viewContainRef: ViewContainerRef
   ) {}
 
   onSwitchMode() {
@@ -46,10 +48,19 @@ export class AuthComponent {
       },
       error: (errMsg) => {
         this.error = errMsg;
+        this.showErrorAlert(errMsg);
         this.isLoading = false;
       },
     });
 
     authForm.reset();
+  }
+
+  private showErrorAlert(err: string) {
+    const component = this.viewContainRef.createComponent(AlertComponent);
+  }
+
+  onHandleError() {
+    this.error = null;
   }
 }
