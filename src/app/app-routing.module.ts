@@ -43,8 +43,7 @@ const appRoutes: Routes = [
     component: ShoppingListComponent,
     children: [{ path: ':id', component: ShoppingEditComponent }],
   },
-  { path: '', component: RecipesComponent, pathMatch: 'full' },
-  { path: '**', redirectTo: 'recipe' },
+  { path: '', component: AuthComponent, pathMatch: 'full' },
 ];
 
 @NgModule({

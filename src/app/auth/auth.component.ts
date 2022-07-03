@@ -53,7 +53,7 @@ export class AuthComponent implements OnDestroy {
     userSubs.subscribe({
       next: (resData) => {
         this.isLoading = false;
-        this.router.navigate(['/recipes']);
+        this.router.navigate(['/recipe']);
       },
       error: (errMsg) => {
         this.error = errMsg;
