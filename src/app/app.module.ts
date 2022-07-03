@@ -24,6 +24,7 @@ import { FormsModule } from '@angular/forms';
 import { AppLoadingSpinner } from './shared-components/loading-spinner/loading-spinner.component';
 import { AuthInterceptorService } from './interceptor/auth-interceptor.service';
 import { AlertComponent } from './shared-components/alert/alert.component';
+import { PlaceholderDirective } from './shared-components/placeholder/placeholder.directive';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { AlertComponent } from './shared-components/alert/alert.component';
     AuthComponent,
     AppLoadingSpinner,
     AlertComponent,
+    PlaceholderDirective,
   ],
   imports: [
     BrowserModule,
