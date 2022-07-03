@@ -20,6 +20,7 @@ import { AuthInterceptorService } from './interceptor/auth-interceptor.service';
 import { AlertComponent } from './shared-components/alert/alert.component';
 import { PlaceholderDirective } from './shared-components/placeholder/placeholder.directive';
 import { RecipesModule } from './recipes/recipes.module';
+import { RecipesRoutingModule } from './recipes/recipes-routing.module';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { RecipesModule } from './recipes/recipes.module';
     ReactiveFormsModule,
     FormsModule,
     RecipesModule,
+    RecipesRoutingModule
   ],
   providers: [
     IngredientService,

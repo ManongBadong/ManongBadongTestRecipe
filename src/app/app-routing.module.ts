@@ -17,28 +17,6 @@ const appRoutes: Routes = [
     component: AuthComponent,
   },
   {
-    path: 'recipe',
-    component: RecipesComponent,
-    canActivate: [AuthGuard],
-    children: [
-      { path: '', component: RecipeStartComponent, pathMatch: 'full' },
-      {
-        path: 'new',
-        component: RecipeEditComponent,
-      },
-      {
-        path: ':id',
-        component: RecipeDetailComponent,
-        resolve: [RecipesResolverService],
-      },
-      {
-        path: ':id/edit',
-        component: RecipeEditComponent,
-        resolve: [RecipesResolverService],
-      },
-    ],
-  },
-  {
     path: 'shopping-list',
     component: ShoppingListComponent,
     children: [{ path: ':id', component: ShoppingEditComponent }],
