@@ -9,11 +9,6 @@ const appRoutes: Routes = [
     path: 'auth',
     component: AuthComponent,
   },
-  {
-    path: 'shopping-list',
-    component: ShoppingListComponent,
-    children: [{ path: ':id', component: ShoppingEditComponent }],
-  },
   { path: '', component: AuthComponent, pathMatch: 'full' },
 ];
 

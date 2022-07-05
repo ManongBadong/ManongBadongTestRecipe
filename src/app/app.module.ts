@@ -21,13 +21,13 @@ import { AlertComponent } from './shared-components/alert/alert.component';
 import { PlaceholderDirective } from './shared-components/placeholder/placeholder.directive';
 import { RecipesModule } from './recipes/recipes.module';
 import { RecipesRoutingModule } from './recipes/recipes-routing.module';
+import { ShoppingListRoutingModule } from './shopping-list/shopping-list-routing.module';
+import { ShoppingListModule } from './shopping-list/shopping-list.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    ShoppingListComponent,
-    ShoppingEditComponent,
     DropdownDirective,
     PageNotFoundComponent,
     AuthComponent,
@@ -42,7 +42,9 @@ import { RecipesRoutingModule } from './recipes/recipes-routing.module';
     ReactiveFormsModule,
     FormsModule,
     RecipesModule,
-    RecipesRoutingModule
+    RecipesRoutingModule,
+    ShoppingListModule,
+    ShoppingListRoutingModule,
   ],
   providers: [
     IngredientService,
