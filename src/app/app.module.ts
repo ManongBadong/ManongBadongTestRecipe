@@ -12,6 +12,7 @@ import { RecipesModule } from './recipes/recipes.module';
 import { RecipesRoutingModule } from './recipes/recipes-routing.module';
 import { ShoppingListRoutingModule } from './shopping-list/shopping-list-routing.module';
 import { ShoppingListModule } from './shopping-list/shopping-list.module';
+import { SharedModule } from './shared-components/shared.module';
 import { CoreModule } from './core.module';
 import { AuthenticationModule } from './auth/auth.module';
 
@@ -26,6 +27,7 @@ import { AuthenticationModule } from './auth/auth.module';
     RecipesRoutingModule,
     ShoppingListModule,
     ShoppingListRoutingModule,
+    SharedModule,
     CoreModule,
     AuthenticationModule,
   ],
