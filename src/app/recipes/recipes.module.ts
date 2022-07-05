@@ -19,7 +19,7 @@ import { SharedModule } from '../shared-components/shared.module';
     RecipeStartComponent,
     RecipeEditComponent,
   ],
-  imports: [SharedModule, ReactiveFormsModule],
+  imports: [SharedModule, RouterModule, ReactiveFormsModule],
   exports: [
     RecipesComponent,
     RecipeListComponent,

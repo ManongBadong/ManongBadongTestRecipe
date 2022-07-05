@@ -17,6 +17,8 @@ import { RecipesModule } from './recipes/recipes.module';
 import { RecipesRoutingModule } from './recipes/recipes-routing.module';
 import { ShoppingListRoutingModule } from './shopping-list/shopping-list-routing.module';
 import { ShoppingListModule } from './shopping-list/shopping-list.module';
+import { AppLoadingSpinner } from './shared-components/loading-spinner/loading-spinner.component';
+import { SharedModule } from './shared-components/shared.module';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,7 @@ import { ShoppingListModule } from './shopping-list/shopping-list.module';
     RecipesRoutingModule,
     ShoppingListModule,
     ShoppingListRoutingModule,
+    SharedModule,
   ],
   providers: [
     IngredientService,
