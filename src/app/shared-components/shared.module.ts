@@ -18,6 +18,7 @@ import { PlaceholderDirective } from './placeholder/placeholder.directive';
     AppLoadingSpinner,
     DropdownDirective,
     PlaceholderDirective,
+    CommonModule,
   ],
 })
 export class SharedModule {}

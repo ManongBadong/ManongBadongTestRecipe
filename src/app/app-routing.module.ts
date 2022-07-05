@@ -3,10 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthComponent } from './auth/auth.component';
 
 const appRoutes: Routes = [
-  {
-    path: 'auth',
-    component: AuthComponent,
-  },
   { path: '', component: AuthComponent, pathMatch: 'full' },
 ];
 
