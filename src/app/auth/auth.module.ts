@@ -15,6 +15,6 @@ import { AuthComponent } from './auth.component';
         component: AuthComponent,
       },
     ]),
-  ],
+  ]
 })
 export class AuthenticationModule {}

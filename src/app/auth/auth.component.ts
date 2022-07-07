@@ -34,13 +34,13 @@ export class AuthComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    let testMain = [];
-    let test = [{ test1: 1, test2: 2 }];
-    console.log(test);
-    for (let key in test[0]) {
-      testMain.push({ name: key, value: test[0][key] });
-    }
-    console.log(testMain);
+    // let testMain = [];
+    // let test = [{ test1: 1, test2: 2 }];
+    // console.log(test);
+    // for (let key in test[0]) {
+    //   testMain.push({ name: key, value: test[0][key] });
+    // }
+    // console.log(testMain);
   }
 
   onSwitchMode() {
