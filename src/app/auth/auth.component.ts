@@ -1,6 +1,7 @@
 import {
   Component,
   OnDestroy,
+  OnInit,
   ViewChild,
   ViewContainerRef,
 } from '@angular/core';
@@ -18,7 +19,7 @@ import { PlaceholderDirective } from '../shared-components/placeholder/placehold
   selector: 'app-auth',
   templateUrl: './auth.component.html',
 })
-export class AuthComponent implements OnDestroy {
+export class AuthComponent implements OnInit, OnDestroy {
   isLoginMode = true;
   isLoading = false;
   error: string = null;
@@ -31,6 +32,16 @@ export class AuthComponent implements OnDestroy {
     private router: Router,
     private viewContainRef: ViewContainerRef
   ) {}
+
+  ngOnInit() {
+    let testMain = [];
+    let test = [{ test1: 1, test2: 2 }];
+    console.log(test);
+    for (let key in test[0]) {
+      testMain.push({ name: key, value: test[0][key] });
+    }
+    console.log(testMain);
+  }
 
   onSwitchMode() {
     this.isLoginMode = !this.isLoginMode;
