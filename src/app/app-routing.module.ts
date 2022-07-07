@@ -4,11 +4,6 @@ import { AuthComponent } from './auth/auth.component';
 
 const appRoutes: Routes = [
   { path: '', component: AuthComponent, pathMatch: 'full' },
-  {
-    path: 'recipe',
-    loadChildren: () =>
-      import('./recipes/recipes.module').then((x) => x.RecipesModule),
-  },
 ];
 
 @NgModule({
