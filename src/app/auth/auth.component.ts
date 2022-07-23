@@ -25,6 +25,8 @@ export class AuthComponent implements OnInit, OnDestroy {
   error: string = null;
   @ViewChild(PlaceholderDirective) alertHost: PlaceholderDirective;
 
+  // mainAllergen = []
+
   private closeSub: Subscription;
 
   constructor(
@@ -34,13 +36,11 @@ export class AuthComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    // let testMain = [];
-    // let test = [{ test1: 1, test2: 2 }];
-    // console.log(test);
-    // for (let key in test[0]) {
-    //   testMain.push({ name: key, value: test[0][key] });
+    // let returnFromAPI = [{ test1: 1, test2: 2 }];
+    // for (let key in returnFromAPI[0]) {
+    //   this.mainAllergen.push({ name: key, value: returnFromAPI[0][key] });
     // }
-    // console.log(testMain);
+    // console.log(this.mainAllergen);
   }
 
   onSwitchMode() {
